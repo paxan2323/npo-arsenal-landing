@@ -26,6 +26,13 @@ DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '83.166.247.78', '.railway.app', 'npo-arsenal.ru', 'www.npo-arsenal.ru']
 
+# CSRF trusted origins для HTTPS
+CSRF_TRUSTED_ORIGINS = [
+    'https://npo-arsenal.ru',
+    'https://www.npo-arsenal.ru',
+    'https://83.166.247.78',
+]
+
 # Yandex SmartCaptcha settings
 SMARTCAPTCHA_CLIENT_KEY = os.getenv('SMARTCAPTCHA_CLIENT_KEY', '')
 SMARTCAPTCHA_SERVER_KEY = os.getenv('SMARTCAPTCHA_SERVER_KEY', '')
