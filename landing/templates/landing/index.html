@@ -96,18 +96,17 @@
                 </p>
             </div>
             
+            {% if settings.turret_image %}
             <div class="about-image" data-aos="fade-left">
                 <div class="image-frame">
                     <div class="frame-corner frame-corner-tl"></div>
                     <div class="frame-corner frame-corner-tr"></div>
                     <div class="frame-corner frame-corner-bl"></div>
                     <div class="frame-corner frame-corner-br"></div>
-                    <div class="image-placeholder">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-                        <span>Изображение турели</span>
-                    </div>
+                    <img src="{{ settings.turret_image.url }}" alt="Турель Птицелов" class="turret-image">
                 </div>
             </div>
+            {% endif %}
         </div>
         
         <!-- Features Grid -->

@@ -811,6 +811,13 @@ button {
     gap: var(--spacing-md);
 }
 
+.turret-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 /* Features Grid */
 .features-grid {
     display: grid;

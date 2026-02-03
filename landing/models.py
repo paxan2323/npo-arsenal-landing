@@ -175,6 +175,8 @@ class SiteSettings(models.Model):
     hero_subtitle = models.TextField('Подзаголовок Hero',
         default='Роботизированная турель ближней контрдроновой защиты')
     about_text = models.TextField('Текст "О системе"', blank=True)
+    turret_image = models.ImageField('Изображение турели', upload_to='turret/', blank=True, null=True,
+        help_text='Загрузите фотографию турели для отображения в секции "О системе"')
     contact_email = models.EmailField('Email для связи', default='npo.arsenal.info@mail.ru')
     contact_phone = models.CharField('Телефон', max_length=30, default='8-960-283-15-14')
     contact_address = models.TextField('Адрес', 
