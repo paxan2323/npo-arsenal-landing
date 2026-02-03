@@ -1,0 +1,437 @@
+{% extends 'landing/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- ===== HERO SECTION ===== -->
+<section class="hero" id="hero">
+    <div class="hero-bg">
+        <div class="hero-grid"></div>
+        <div class="hero-gradient"></div>
+    </div>
+    
+    <div class="hero-content">
+        <div class="hero-badge" data-aos="fade-down" data-aos-delay="100">
+            <span class="badge-dot"></span>
+            Система контрдроновой защиты
+        </div>
+        
+        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">
+            <span class="title-accent">{{ settings.hero_title }}</span>
+        </h1>
+        
+        <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="300">
+            {{ settings.hero_subtitle }}
+        </p>
+        
+        <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+            <div class="stat-item">
+                <span class="stat-value">70</span>
+                <span class="stat-unit">м</span>
+                <span class="stat-label">Дальность поражения</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-value">&lt;2</span>
+                <span class="stat-unit">сек</span>
+                <span class="stat-label">Время реакции</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-value">360</span>
+                <span class="stat-unit">°</span>
+                <span class="stat-label">Сектор обзора</span>
+            </div>
+        </div>
+        
+        <div class="hero-actions" data-aos="fade-up" data-aos-delay="500">
+            <a href="#contact" class="btn btn-primary">
+                <span>Запросить информацию</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="#specs" class="btn btn-secondary">
+                <span>Характеристики</span>
+            </a>
+        </div>
+    </div>
+    
+    <div class="hero-target">
+        <div class="target-ring target-ring-1"></div>
+        <div class="target-ring target-ring-2"></div>
+        <div class="target-ring target-ring-3"></div>
+        <div class="target-crosshair"></div>
+    </div>
+    
+    <div class="hero-scroll">
+        <a href="#about" class="scroll-indicator">
+            <span>Подробнее</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+        </a>
+    </div>
+</section>
+
+<!-- ===== ABOUT SECTION ===== -->
+<section class="section about" id="about">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">О системе</span>
+            <h2 class="section-title">Интеллектуальная защита <br>от воздушных угроз</h2>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-text" data-aos="fade-right">
+                <p class="about-lead">
+                    Программно-аппаратный комплекс «Птицелов» предназначен для автоматического 
+                    обнаружения, сопровождения и нейтрализации малоразмерных беспилотных 
+                    летательных аппаратов.
+                </p>
+                <p>
+                    Система сочетает функции интеллектуального видеонаблюдения, распознавания 
+                    целей на базе нейросетевых алгоритмов и точного наведения роботизированной 
+                    турели. Разработка ведётся российскими специалистами, испытания проходят 
+                    совместно с Министерством обороны РФ.
+                </p>
+                <p>
+                    Унифицированная платформа позволяет применять широкий спектр средств 
+                    поражения, включая стрелковое оружие и системы радиоэлектронного подавления.
+                </p>
+            </div>
+            
+            <div class="about-image" data-aos="fade-left">
+                <div class="image-frame">
+                    <div class="frame-corner frame-corner-tl"></div>
+                    <div class="frame-corner frame-corner-tr"></div>
+                    <div class="frame-corner frame-corner-bl"></div>
+                    <div class="frame-corner frame-corner-br"></div>
+                    <div class="image-placeholder">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                        <span>Изображение турели</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Features Grid -->
+        <div class="features-grid">
+            {% for feature in features %}
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:1 }}00">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        {% if feature.icon == 'target' %}
+                        <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+                        {% elif feature.icon == 'eye' %}
+                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>
+                        {% elif feature.icon == 'cpu' %}
+                        <rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/>
+                        {% elif feature.icon == 'shield' %}
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        {% else %}
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                        {% endif %}
+                    </svg>
+                </div>
+                <h3 class="feature-title">{{ feature.title }}</h3>
+                <p class="feature-description">{{ feature.description }}</p>
+            </div>
+            {% empty %}
+            <!-- Default features if none in DB -->
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                </div>
+                <h3 class="feature-title">Автоматическое обнаружение</h3>
+                <p class="feature-description">Нейросетевой детектор распознаёт БПЛА различных классов с точностью более 95%</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <h3 class="feature-title">Многокамерная система</h3>
+                <p class="feature-description">Широкоугольная камера 4K + прицельная 2K с 30× оптическим зумом</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
+                </div>
+                <h3 class="feature-title">AI вычислитель</h3>
+                <p class="feature-description">AMD Ryzen AI Max+ с 128 ГБ RAM обеспечивает обработку в реальном времени</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3 class="feature-title">Секторная защита</h3>
+                <p class="feature-description">Механические ограничители секторов 40°–180° с программными зонами запрета</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ===== SPECS SECTION ===== -->
+<section class="section specs" id="specs">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">ТТХ</span>
+            <h2 class="section-title">Тактико-технические <br>характеристики</h2>
+        </div>
+        
+        <div class="specs-terminal" data-aos="fade-up" data-aos-delay="200">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <span></span><span></span><span></span>
+                </div>
+                <span class="terminal-title">specs.log — Птицелов v1.0</span>
+            </div>
+            
+            <div class="terminal-body">
+                {% for group in spec_groups %}
+                <div class="spec-group">
+                    <div class="spec-group-header">
+                        <span class="spec-group-icon">&gt;</span>
+                        <span class="spec-group-name">{{ group.name }}</span>
+                    </div>
+                    <div class="spec-group-items">
+                        {% for spec in group.specifications.all %}
+                        <div class="spec-row">
+                            <span class="spec-name">{{ spec.name }}</span>
+                            <span class="spec-dots"></span>
+                            <span class="spec-value">{{ spec.value }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% empty %}
+                <!-- Default specs if none in DB -->
+                <div class="spec-group">
+                    <div class="spec-group-header">
+                        <span class="spec-group-icon">&gt;</span>
+                        <span class="spec-group-name">Общие параметры</span>
+                    </div>
+                    <div class="spec-group-items">
+                        <div class="spec-row"><span class="spec-name">Назначение</span><span class="spec-dots"></span><span class="spec-value">Нейтрализация БПЛА (8–50 м)</span></div>
+                        <div class="spec-row"><span class="spec-name">Масса платформы</span><span class="spec-dots"></span><span class="spec-value">≤ 30 кг</span></div>
+                        <div class="spec-row"><span class="spec-name">Габариты основания</span><span class="spec-dots"></span><span class="spec-value">400 × 400 мм</span></div>
+                        <div class="spec-row"><span class="spec-name">Климатическое исполнение</span><span class="spec-dots"></span><span class="spec-value">IP65, −40…+45 °C</span></div>
+                    </div>
+                </div>
+                <div class="spec-group">
+                    <div class="spec-group-header">
+                        <span class="spec-group-icon">&gt;</span>
+                        <span class="spec-group-name">Механика</span>
+                    </div>
+                    <div class="spec-group-items">
+                        <div class="spec-row"><span class="spec-name">Диапазон углов (гориз.)</span><span class="spec-dots"></span><span class="spec-value">0…720°</span></div>
+                        <div class="spec-row"><span class="spec-name">Диапазон углов (верт.)</span><span class="spec-dots"></span><span class="spec-value">−10…+90°</span></div>
+                        <div class="spec-row"><span class="spec-name">Макс. угловая скорость</span><span class="spec-dots"></span><span class="spec-value">≤ 180 °/с</span></div>
+                        <div class="spec-row"><span class="spec-name">Точность позиционирования</span><span class="spec-dots"></span><span class="spec-value">&lt; 0,05°</span></div>
+                    </div>
+                </div>
+                <div class="spec-group">
+                    <div class="spec-group-header">
+                        <span class="spec-group-icon">&gt;</span>
+                        <span class="spec-group-name">Техническое зрение</span>
+                    </div>
+                    <div class="spec-group-items">
+                        <div class="spec-row"><span class="spec-name">Камера обнаружения</span><span class="spec-dots"></span><span class="spec-value">4K, FOV 100°, 30 fps</span></div>
+                        <div class="spec-row"><span class="spec-name">Камера прицельная</span><span class="spec-dots"></span><span class="spec-value">2K, 30× opt. zoom</span></div>
+                        <div class="spec-row"><span class="spec-name">Дальность распознавания</span><span class="spec-dots"></span><span class="spec-value">100–250 м</span></div>
+                        <div class="spec-row"><span class="spec-name">Задержка видеопотока</span><span class="spec-dots"></span><span class="spec-value">≤ 0,3 с</span></div>
+                    </div>
+                </div>
+                <div class="spec-group">
+                    <div class="spec-group-header">
+                        <span class="spec-group-icon">&gt;</span>
+                        <span class="spec-group-name">Электропитание</span>
+                    </div>
+                    <div class="spec-group-items">
+                        <div class="spec-row"><span class="spec-name">Аккумуляторы</span><span class="spec-dots"></span><span class="spec-value">2 × 6S LiPo, 44–50 В</span></div>
+                        <div class="spec-row"><span class="spec-name">Автономность</span><span class="spec-dots"></span><span class="spec-value">≥ 8 ч</span></div>
+                        <div class="spec-row"><span class="spec-name">Внешнее питание</span><span class="spec-dots"></span><span class="spec-value">50–70 В DC, ≤ 5 А</span></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DOCUMENTS SECTION ===== -->
+<section class="section documents" id="documents">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Документация</span>
+            <h2 class="section-title">Материалы для скачивания</h2>
+        </div>
+        
+        <!-- Category Filter -->
+        <div class="docs-filter" data-aos="fade-up" data-aos-delay="100">
+            <button class="filter-btn active" data-category="all">Все документы</button>
+            {% for category in document_categories %}
+            <button class="filter-btn" data-category="{{ category.slug }}">{{ category.name }}</button>
+            {% endfor %}
+        </div>
+        
+        <!-- Documents Grid -->
+        <div class="docs-grid" data-aos="fade-up" data-aos-delay="200">
+            {% for category in document_categories %}
+                {% for document in category.documents.all %}
+                    {% if document.is_active %}
+                    <div class="doc-card" data-category="{{ category.slug }}">
+                        <div class="doc-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                {% if document.file_extension == 'pdf' %}
+                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M10 12h4"/><path d="M10 16h4"/>
+                                {% else %}
+                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/>
+                                {% endif %}
+                            </svg>
+                            <span class="doc-ext">.{{ document.file_extension }}</span>
+                        </div>
+                        <div class="doc-info">
+                            <h4 class="doc-title">{{ document.title }}</h4>
+                            {% if document.description %}
+                            <p class="doc-description">{{ document.description }}</p>
+                            {% endif %}
+                            <div class="doc-meta">
+                                <span class="doc-category">{{ category.name }}</span>
+                                <span class="doc-size">{{ document.file_size }}</span>
+                            </div>
+                        </div>
+                        <a href="{% url 'landing:document_download' document.pk %}" class="doc-download" title="Скачать">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                        </a>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% empty %}
+            <div class="docs-empty">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <p>Документы будут добавлены позже</p>
+                <span>Загрузите документы через панель администратора</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section class="section contact" id="contact">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-info" data-aos="fade-right">
+                <span class="section-tag">Контакты</span>
+                <h2 class="section-title">Свяжитесь с нами</h2>
+                <p class="contact-description">
+                    Для получения подробной информации о системе «Птицелов», 
+                    условиях сотрудничества или организации демонстрации — 
+                    свяжитесь с нами любым удобным способом.
+                </p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="contact-text">
+                            <span class="contact-label">Телефон</span>
+                            <a href="tel:{{ settings.contact_phone }}">{{ settings.contact_phone }}</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        </div>
+                        <div class="contact-text">
+                            <span class="contact-label">Email</span>
+                            <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="contact-text">
+                            <span class="contact-label">Адрес</span>
+                            <span>{{ settings.contact_address }}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-company">
+                    <strong>ООО «НПО Арсенал»</strong>
+                    <span>Санкт-Петербург, Россия</span>
+                </div>
+            </div>
+            
+            <div class="contact-form-wrapper" data-aos="fade-left">
+                <form class="contact-form" id="contactForm" method="post" action="{% url 'landing:contact_submit' %}">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        {{ contact_form.name }}
+                        <label class="form-label">Ваше имя *</label>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            {{ contact_form.email }}
+                            <label class="form-label">Email *</label>
+                        </div>
+                        <div class="form-group">
+                            {{ contact_form.phone }}
+                            <label class="form-label">Телефон</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ contact_form.company }}
+                        <label class="form-label">Организация</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ contact_form.message }}
+                        <label class="form-label">Сообщение *</label>
+                    </div>
+                    
+                    <!-- Honeypot field (hidden from users, bots fill it) -->
+                    <div class="form-group" style="position: absolute; left: -9999px;" aria-hidden="true">
+                        <input type="text" name="website" tabindex="-1" autocomplete="off" placeholder="Website">
+                    </div>
+                    
+                    <!-- Yandex SmartCaptcha -->
+                    <div class="form-group captcha-container">
+                        <div id="captcha-container"
+                             data-sitekey="{{ smartcaptcha_client_key }}">
+                        </div>
+                    </div>
+                    
+                    <!-- Согласие на обработку ПДН -->
+                    <div class="form-group form-consent">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="consent" id="consent-checkbox" class="form-checkbox" required>
+                            <span class="checkbox-custom"></span>
+                            <span class="checkbox-text">Я даю согласие на обработку персональных данных в соответствии с <a href="{% url 'landing:privacy' %}" target="_blank">Политикой конфиденциальности</a> *</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span>Отправить заявку</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                    </button>
+                </form>
+                
+                <!-- Success Message -->
+                <div class="form-success" id="formSuccess" style="display: none;">
+                    <div class="success-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3>Заявка отправлена!</h3>
+                    <p>Мы свяжемся с вами в ближайшее время</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

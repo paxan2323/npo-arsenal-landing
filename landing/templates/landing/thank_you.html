@@ -1,0 +1,27 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+<section class="section" style="min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <div class="container" style="text-align: center;">
+        <div class="form-success" style="display: block;">
+            <div class="success-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+            </div>
+            <h2 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">Спасибо за заявку!</h2>
+            <p style="color: var(--color-text-secondary); margin-bottom: 2rem;">
+                Мы получили ваше сообщение и свяжемся с вами в ближайшее время.
+            </p>
+            <a href="{% url 'landing:index' %}" class="btn btn-primary">
+                <span>Вернуться на главную</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m12 19-7-7 7-7"/>
+                    <path d="M19 12H5"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
