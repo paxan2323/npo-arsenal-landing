@@ -24,7 +24,7 @@ if not SECRET_KEY:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.railway.app', 'npo-arsenal.ru', 'www.npo-arsenal.ru']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '83.166.247.78', '.railway.app', 'npo-arsenal.ru', 'www.npo-arsenal.ru']
 
 # Yandex SmartCaptcha settings
 SMARTCAPTCHA_CLIENT_KEY = os.getenv('SMARTCAPTCHA_CLIENT_KEY', '')
