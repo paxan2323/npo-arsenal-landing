@@ -7,13 +7,15 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         obj, created = SiteSettings.objects.get_or_create(
-            id=1,
+            pk=1,
             defaults={
-                'site_name': 'НПО Арсенал',
                 'site_title': 'Птицелов - Антидроновая турель',
+                'site_description': 'НПО Арсенал - Роботизированная турель контрдроновой защиты Птицелов',
+                'hero_title': 'ПТИЦЕЛОВ',
+                'hero_subtitle': 'Роботизированная турель ближней контрдроновой защиты',
                 'contact_email': 'npo.arsenal.info@mail.ru',
                 'contact_phone': '8-960-283-15-14',
-                'contact_address': 'Россия, г. Санкт-Петербург',
+                'contact_address': 'Санкт-Петербург, п. Стрельна, ул. Фронтовая д.3',
             }
         )
         
