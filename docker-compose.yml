@@ -5,8 +5,6 @@ services:
     restart: always
     env_file:
       - .env
-    environment:
-      - DEBUG=False
     volumes:
       - static_volume:/app/staticfiles
       - media_volume:/app/media
