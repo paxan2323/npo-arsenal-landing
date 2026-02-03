@@ -200,6 +200,8 @@ function initSmartCaptcha() {
         try {
             smartCaptchaWidgetId = window.smartCaptcha.render(captchaContainer, {
                 sitekey: sitekey,
+                hl: 'ru',
+                shieldPosition: 'bottom-right',
                 callback: function(token) {
                     smartCaptchaToken = token;
                     // Clear any captcha errors when solved
