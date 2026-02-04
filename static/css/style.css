@@ -2339,14 +2339,16 @@ textarea:focus-visible {
 
 .software-subtitle i {
     color: var(--color-accent);
-    font-size: 1.2rem;
-    width: 36px;
-    height: 36px;
-    background: rgba(206, 177, 79, 0.1);
-    border-radius: var(--radius-sm);
+    font-size: 1.1rem;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, rgba(206, 177, 79, 0.15) 0%, rgba(206, 177, 79, 0.05) 100%);
+    border: 1px solid rgba(206, 177, 79, 0.25);
+    border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 /* Platform Architecture */
@@ -2441,19 +2443,44 @@ textarea:focus-visible {
 }
 
 .module-icon {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, var(--color-accent), var(--color-secondary));
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, rgba(206, 177, 79, 0.15) 0%, rgba(206, 177, 79, 0.05) 100%);
+    border: 1px solid rgba(206, 177, 79, 0.3);
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: var(--spacing-md);
+    position: relative;
+    transition: all var(--transition-medium);
+}
+
+.module-icon::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--color-accent), var(--color-secondary));
+    opacity: 0;
+    z-index: -1;
+    transition: opacity var(--transition-medium);
+}
+
+.module-card:hover .module-icon {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-secondary));
+    border-color: transparent;
+    box-shadow: 0 0 20px rgba(206, 177, 79, 0.4);
+}
+
+.module-card:hover .module-icon i {
+    color: var(--color-bg-primary);
 }
 
 .module-icon i {
-    font-size: 1.4rem;
-    color: var(--color-bg-primary);
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    transition: color var(--transition-medium);
 }
 
 .module-title {
