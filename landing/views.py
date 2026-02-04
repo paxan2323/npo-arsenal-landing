@@ -14,7 +14,8 @@ from django.conf import settings
 from .models import (
     DocumentCategory, Document, Feature,
     SpecificationGroup,
-    ContactRequest, SiteSettings
+    ContactRequest, SiteSettings,
+    SoftwarePlatform, SoftwareModule, HardwareInterface, DevelopmentPlan
 )
 from .forms import ContactForm
 
@@ -64,6 +65,11 @@ def index(request):
         ).filter(documents__is_active=True).distinct(),
         'contact_form': ContactForm(),
         'smartcaptcha_client_key': settings.SMARTCAPTCHA_CLIENT_KEY,
+        # Раздел ПО
+        'software_platform': SoftwarePlatform.get_platform(),
+        'software_modules': SoftwareModule.objects.filter(is_active=True),
+        'hardware_interfaces': HardwareInterface.objects.filter(is_active=True),
+        'development_plans': DevelopmentPlan.objects.filter(is_active=True),
     }
     return render(request, 'landing/index.html', context)
 

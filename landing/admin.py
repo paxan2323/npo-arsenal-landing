@@ -6,7 +6,8 @@ from django.utils.html import format_html
 from .models import (
     DocumentCategory, Document, Feature, 
     SpecificationGroup, Specification, 
-    GalleryImage, ContactRequest, SiteSettings
+    GalleryImage, ContactRequest, SiteSettings,
+    SoftwarePlatform, SoftwareModule, HardwareInterface, DevelopmentPlan
 )
 
 
@@ -153,3 +154,76 @@ class SiteSettingsAdmin(admin.ModelAdmin):
     
     def has_delete_permission(self, request, obj=None):
         return False  # Запрещаем удаление настроек
+
+
+# ============================================
+# Раздел "Программное обеспечение"
+# ============================================
+
+@admin.register(SoftwarePlatform)
+class SoftwarePlatformAdmin(admin.ModelAdmin):
+    """Админка для настроек платформы ПО (singleton)"""
+    fieldsets = (
+        ('Вводный текст', {
+            'fields': ('intro_text',)
+        }),
+        ('Архитектура платформы', {
+            'fields': ('platform_name', 'hardware', 'app_type', 'languages')
+        }),
+    )
+    
+    def has_add_permission(self, request):
+        return not SoftwarePlatform.objects.exists()
+    
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+
+@admin.register(SoftwareModule)
+class SoftwareModuleAdmin(admin.ModelAdmin):
+    """Админка для функциональных модулей ПО"""
+    list_display = ['title', 'icon', 'order', 'is_active']
+    list_editable = ['order', 'is_active']
+    list_filter = ['is_active', 'icon']
+    search_fields = ['title', 'description']
+    ordering = ['order']
+    
+    fieldsets = (
+        ('Основное', {
+            'fields': ('title', 'icon', 'description')
+        }),
+        ('Технические детали', {
+            'fields': ('tech_details',),
+            'classes': ('collapse',)
+        }),
+        ('Настройки', {
+            'fields': ('order', 'is_active')
+        }),
+    )
+
+
+@admin.register(HardwareInterface)
+class HardwareInterfaceAdmin(admin.ModelAdmin):
+    """Админка для аппаратных интерфейсов"""
+    list_display = ['name', 'value', 'order', 'is_active']
+    list_editable = ['value', 'order', 'is_active']
+    ordering = ['order']
+
+
+@admin.register(DevelopmentPlan)
+class DevelopmentPlanAdmin(admin.ModelAdmin):
+    """Админка для планов развития"""
+    list_display = ['title', 'status', 'order', 'is_active']
+    list_editable = ['status', 'order', 'is_active']
+    list_filter = ['status', 'is_active']
+    search_fields = ['title', 'description']
+    ordering = ['order']
+    
+    fieldsets = (
+        ('Основное', {
+            'fields': ('title', 'description', 'status')
+        }),
+        ('Настройки', {
+            'fields': ('order', 'is_active')
+        }),
+    )

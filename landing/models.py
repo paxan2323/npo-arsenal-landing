@@ -199,3 +199,102 @@ class SiteSettings(models.Model):
         """Получить настройки или создать дефолтные"""
         obj, created = cls.objects.get_or_create(pk=1)
         return obj
+
+
+# ==================== ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ====================
+
+class SoftwarePlatform(models.Model):
+    """Описание платформы и архитектуры ПО (синглтон)"""
+    intro_text = models.TextField('Вводный текст', 
+        default='Программное обеспечение обеспечивает автоматическое сопровождение воздушных целей и наведение двухосевой турели.')
+    platform_name = models.CharField('Платформа', max_length=100, default='Android 12 AOSP')
+    hardware = models.CharField('Бортовой вычислитель', max_length=200, 
+        default='8-ядерный CPU, GPU Adreno')
+    app_type = models.CharField('Тип приложения', max_length=100, default='Монолитное Android-приложение (APK)')
+    languages = models.CharField('Языки разработки', max_length=200, default='Scala, Java, C++ (NDK)')
+    
+    class Meta:
+        verbose_name = 'Платформа ПО'
+        verbose_name_plural = 'Платформа ПО'
+    
+    def __str__(self):
+        return 'Настройки платформы ПО'
+    
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super().save(*args, **kwargs)
+    
+    @classmethod
+    def get_platform(cls):
+        obj, created = cls.objects.get_or_create(pk=1)
+        return obj
+
+
+class SoftwareModule(models.Model):
+    """Функциональные модули ПО"""
+    ICON_CHOICES = [
+        ('cpu', 'Процессор'),
+        ('eye', 'Зрение/Трекинг'),
+        ('crosshair', 'Наведение'),
+        ('video', 'Видео/Стриминг'),
+        ('settings', 'Настройки'),
+        ('chip', 'Контроллер'),
+        ('wifi', 'Связь'),
+        ('terminal', 'Терминал'),
+    ]
+    
+    title = models.CharField('Название модуля', max_length=100)
+    icon = models.CharField('Иконка', max_length=50, choices=ICON_CHOICES, default='cpu')
+    description = models.TextField('Описание')
+    tech_details = models.TextField('Технические детали', blank=True,
+        help_text='Например: "~20 fps при 4K-потоке"')
+    order = models.PositiveIntegerField('Порядок', default=0)
+    is_active = models.BooleanField('Активен', default=True)
+    
+    class Meta:
+        verbose_name = 'Модуль ПО'
+        verbose_name_plural = 'Модули ПО'
+        ordering = ['order']
+    
+    def __str__(self):
+        return self.title
+
+
+class HardwareInterface(models.Model):
+    """Аппаратное взаимодействие"""
+    name = models.CharField('Название', max_length=100)
+    value = models.CharField('Значение/Характеристика', max_length=200)
+    order = models.PositiveIntegerField('Порядок', default=0)
+    is_active = models.BooleanField('Активен', default=True)
+    
+    class Meta:
+        verbose_name = 'Аппаратный интерфейс'
+        verbose_name_plural = 'Аппаратные интерфейсы'
+        ordering = ['order']
+    
+    def __str__(self):
+        return self.name
+
+
+class DevelopmentPlan(models.Model):
+    """Планы развития ПО"""
+    STATUS_CHOICES = [
+        ('planned', 'Запланировано'),
+        ('in_progress', 'В разработке'),
+        ('completed', 'Реализовано'),
+    ]
+    
+    title = models.CharField('Название', max_length=200)
+    description = models.TextField('Описание', blank=True)
+    status = models.CharField('Статус', max_length=20, choices=STATUS_CHOICES, default='planned')
+    order = models.PositiveIntegerField('Порядок', default=0)
+    is_active = models.BooleanField('Активен', default=True)
+    
+    class Meta:
+        verbose_name = 'План развития'
+        verbose_name_plural = 'Планы развития'
+        ordering = ['order']
+    
+    def __str__(self):
+        return self.title
+

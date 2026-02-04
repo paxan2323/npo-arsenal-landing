@@ -254,6 +254,135 @@
     </div>
 </section>
 
+<!-- ===== SOFTWARE SECTION ===== -->
+<section class="section software" id="software">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">Технологии</span>
+            <h2 class="section-title">Программное обеспечение</h2>
+        </div>
+        
+        {% if software_platform %}
+        <!-- Platform Architecture -->
+        <div class="software-platform" data-aos="fade-up" data-aos-delay="100">
+            <div class="platform-intro">
+                <p>{{ software_platform.intro_text }}</p>
+            </div>
+            <div class="platform-specs">
+                <div class="platform-spec">
+                    <span class="platform-label">Платформа</span>
+                    <span class="platform-value">{{ software_platform.platform_name }}</span>
+                </div>
+                <div class="platform-spec">
+                    <span class="platform-label">Железо</span>
+                    <span class="platform-value">{{ software_platform.hardware }}</span>
+                </div>
+                <div class="platform-spec">
+                    <span class="platform-label">Приложение</span>
+                    <span class="platform-value">{{ software_platform.app_type }}</span>
+                </div>
+                <div class="platform-spec">
+                    <span class="platform-label">Языки</span>
+                    <span class="platform-value">{{ software_platform.languages }}</span>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Functional Modules -->
+        {% if software_modules %}
+        <div class="software-modules" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="software-subtitle">
+                <i class="fas fa-cubes"></i>
+                Функциональные модули
+            </h3>
+            <div class="modules-grid">
+                {% for module in software_modules %}
+                <div class="module-card" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:2 }}00">
+                    <div class="module-icon">
+                        {% if module.icon == 'cpu' %}<i class="fas fa-microchip"></i>
+                        {% elif module.icon == 'eye' %}<i class="fas fa-eye"></i>
+                        {% elif module.icon == 'crosshair' %}<i class="fas fa-crosshairs"></i>
+                        {% elif module.icon == 'video' %}<i class="fas fa-video"></i>
+                        {% elif module.icon == 'settings' %}<i class="fas fa-cog"></i>
+                        {% elif module.icon == 'chip' %}<i class="fas fa-memory"></i>
+                        {% elif module.icon == 'wifi' %}<i class="fas fa-wifi"></i>
+                        {% elif module.icon == 'terminal' %}<i class="fas fa-terminal"></i>
+                        {% else %}<i class="fas fa-code"></i>
+                        {% endif %}
+                    </div>
+                    <h4 class="module-title">{{ module.title }}</h4>
+                    <p class="module-desc">{{ module.description }}</p>
+                    {% if module.tech_details %}
+                    <div class="module-tech">
+                        <code>{{ module.tech_details }}</code>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Hardware Interfaces -->
+        {% if hardware_interfaces %}
+        <div class="software-hardware" data-aos="fade-up" data-aos-delay="300">
+            <h3 class="software-subtitle">
+                <i class="fas fa-plug"></i>
+                Аппаратное взаимодействие
+            </h3>
+            <div class="hardware-terminal">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">system_info.sh</span>
+                </div>
+                <div class="terminal-body">
+                    {% for iface in hardware_interfaces %}
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-name">{{ iface.name }}</span>
+                        <span class="terminal-value">{{ iface.value }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Development Roadmap -->
+        {% if development_plans %}
+        <div class="software-roadmap" data-aos="fade-up" data-aos-delay="400">
+            <h3 class="software-subtitle">
+                <i class="fas fa-road"></i>
+                Планы развития
+            </h3>
+            <div class="roadmap-timeline">
+                {% for plan in development_plans %}
+                <div class="roadmap-item {% if plan.status == 'completed' %}completed{% elif plan.status == 'in_progress' %}in-progress{% else %}planned{% endif %}">
+                    <div class="roadmap-marker">
+                        {% if plan.status == 'completed' %}
+                        <i class="fas fa-check"></i>
+                        {% elif plan.status == 'in_progress' %}
+                        <i class="fas fa-spinner fa-spin"></i>
+                        {% else %}
+                        <i class="fas fa-clock"></i>
+                        {% endif %}
+                    </div>
+                    <div class="roadmap-content">
+                        <h4 class="roadmap-title">{{ plan.title }}</h4>
+                        <p class="roadmap-desc">{{ plan.description }}</p>
+                        <span class="roadmap-status">{{ plan.get_status_display }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
 <!-- ===== DOCUMENTS SECTION ===== -->
 <section class="section documents" id="documents">
     <div class="container">

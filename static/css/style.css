@@ -2292,3 +2292,365 @@ textarea:focus-visible {
     line-height: 1.6;
     font-size: 0.95rem;
 }
+
+/* ===== SOFTWARE SECTION ===== */
+.software {
+    background: var(--color-bg-primary);
+}
+
+.software-subtitle {
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    margin: var(--spacing-2xl) 0 var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-weight: 600;
+}
+
+.software-subtitle i {
+    color: var(--color-accent);
+    font-size: 1.2rem;
+}
+
+/* Platform Architecture */
+.software-platform {
+    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, rgba(26, 26, 26, 0.8) 100%);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.platform-intro {
+    margin-bottom: var(--spacing-lg);
+}
+
+.platform-intro p {
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.platform-specs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.platform-spec {
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-fast);
+}
+
+.platform-spec:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+.platform-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+}
+
+.platform-value {
+    display: block;
+    font-size: 1rem;
+    color: var(--color-text-primary);
+    font-weight: 500;
+}
+
+/* Functional Modules */
+.modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.module-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    transition: all var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+.module-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-secondary));
+    transform: scaleX(0);
+    transition: transform var(--transition-medium);
+}
+
+.module-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.module-card:hover::before {
+    transform: scaleX(1);
+}
+
+.module-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-secondary));
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.module-icon i {
+    font-size: 1.4rem;
+    color: var(--color-bg-primary);
+}
+
+.module-title {
+    font-size: 1.15rem;
+    color: var(--color-secondary);
+    margin: 0 0 var(--spacing-sm);
+    font-weight: 600;
+}
+
+.module-desc {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 var(--spacing-md);
+}
+
+.module-tech {
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+}
+
+.module-tech code {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.8rem;
+    color: var(--color-accent);
+}
+
+/* Hardware Terminal */
+.software-hardware {
+    margin-bottom: var(--spacing-xl);
+}
+
+.hardware-terminal {
+    background: #1a1a1a;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.terminal-header {
+    background: #2d2d2d;
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-dot.red { background: #ff5f56; }
+.terminal-dot.yellow { background: #ffbd2e; }
+.terminal-dot.green { background: #27ca40; }
+
+.terminal-title {
+    margin-left: var(--spacing-md);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--color-text-tertiary);
+}
+
+.terminal-body {
+    padding: var(--spacing-lg);
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.terminal-line {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.terminal-line:last-child {
+    border-bottom: none;
+}
+
+.terminal-prompt {
+    color: var(--color-accent);
+    font-weight: bold;
+}
+
+.terminal-name {
+    color: #98c379;
+    min-width: 180px;
+}
+
+.terminal-value {
+    color: #61afef;
+    flex: 1;
+}
+
+/* Development Roadmap */
+.software-roadmap {
+    margin-bottom: var(--spacing-xl);
+}
+
+.roadmap-timeline {
+    position: relative;
+    padding-left: var(--spacing-xl);
+}
+
+.roadmap-timeline::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-accent), var(--color-border));
+}
+
+.roadmap-item {
+    position: relative;
+    padding: var(--spacing-md) 0 var(--spacing-lg);
+}
+
+.roadmap-marker {
+    position: absolute;
+    left: calc(-1 * var(--spacing-xl) + 2px);
+    width: 24px;
+    height: 24px;
+    background: var(--color-bg-primary);
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+}
+
+.roadmap-item.completed .roadmap-marker {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg-primary);
+}
+
+.roadmap-item.in-progress .roadmap-marker {
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: var(--color-bg-primary);
+}
+
+.roadmap-item.planned .roadmap-marker {
+    color: var(--color-text-tertiary);
+}
+
+.roadmap-content {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    transition: all var(--transition-fast);
+}
+
+.roadmap-item:hover .roadmap-content {
+    border-color: var(--color-accent);
+}
+
+.roadmap-title {
+    font-size: 1.1rem;
+    color: var(--color-secondary);
+    margin: 0 0 var(--spacing-xs);
+    font-weight: 600;
+}
+
+.roadmap-desc {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 var(--spacing-sm);
+}
+
+.roadmap-status {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.roadmap-item.completed .roadmap-status {
+    background: rgba(39, 202, 64, 0.15);
+    color: #27ca40;
+}
+
+.roadmap-item.in-progress .roadmap-status {
+    background: rgba(206, 177, 79, 0.15);
+    color: var(--color-secondary);
+}
+
+.roadmap-item.planned .roadmap-status {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-tertiary);
+}
+
+/* Software Section Mobile */
+@media (max-width: 768px) {
+    .platform-specs {
+        grid-template-columns: 1fr;
+    }
+    
+    .modules-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .terminal-name {
+        min-width: 120px;
+    }
+    
+    .terminal-line {
+        flex-wrap: wrap;
+    }
+    
+    .roadmap-timeline {
+        padding-left: var(--spacing-lg);
+    }
+    
+    .roadmap-marker {
+        left: calc(-1 * var(--spacing-lg) + 2px);
+    }
+}
