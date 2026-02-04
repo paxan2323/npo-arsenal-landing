@@ -35,6 +35,9 @@ jobs:
             docker compose down
             docker compose build --no-cache
             docker compose up -d
+            # Важно: collectstatic после запуска, чтобы обновить volume
+            docker exec arsenal-web python manage.py migrate --noinput
+            docker exec arsenal-web python manage.py collectstatic --noinput
             docker system prune -f
           ENDSSH
 
