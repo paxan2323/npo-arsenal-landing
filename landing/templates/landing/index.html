@@ -264,7 +264,12 @@
         
         {% if software_platform %}
         <!-- Platform Architecture -->
-        <div class="software-platform" data-aos="fade-up" data-aos-delay="100">
+        <div class="software-block" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="software-subtitle">
+                <i class="fas fa-microchip"></i>
+                Архитектура платформы
+            </h3>
+            <div class="software-platform">
             <div class="platform-intro">
                 <p>{{ software_platform.intro_text }}</p>
             </div>
@@ -286,12 +291,13 @@
                     <span class="platform-value">{{ software_platform.languages }}</span>
                 </div>
             </div>
+            </div>
         </div>
         {% endif %}
         
         <!-- Functional Modules -->
         {% if software_modules %}
-        <div class="software-modules" data-aos="fade-up" data-aos-delay="200">
+        <div class="software-block" data-aos="fade-up" data-aos-delay="200">
             <h3 class="software-subtitle">
                 <i class="fas fa-cubes"></i>
                 Функциональные модули
@@ -326,7 +332,7 @@
         
         <!-- Hardware Interfaces -->
         {% if hardware_interfaces %}
-        <div class="software-hardware" data-aos="fade-up" data-aos-delay="300">
+        <div class="software-block" data-aos="fade-up" data-aos-delay="300">
             <h3 class="software-subtitle">
                 <i class="fas fa-plug"></i>
                 Аппаратное взаимодействие
@@ -353,7 +359,7 @@
         
         <!-- Development Roadmap -->
         {% if development_plans %}
-        <div class="software-roadmap" data-aos="fade-up" data-aos-delay="400">
+        <div class="software-block" data-aos="fade-up" data-aos-delay="400">
             <h3 class="software-subtitle">
                 <i class="fas fa-road"></i>
                 Планы развития

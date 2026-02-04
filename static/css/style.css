@@ -2296,12 +2296,41 @@ textarea:focus-visible {
 /* ===== SOFTWARE SECTION ===== */
 .software {
     background: var(--color-bg-primary);
+    padding-bottom: var(--spacing-3xl);
+}
+
+/* Software Block Container */
+.software-block {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+    position: relative;
+}
+
+.software-block:last-child {
+    margin-bottom: 0;
+}
+
+/* Декоративный акцент сверху блока */
+.software-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-secondary), transparent);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 .software-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--color-secondary);
-    margin: var(--spacing-2xl) 0 var(--spacing-lg);
+    margin: 0 0 var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
@@ -2311,15 +2340,18 @@ textarea:focus-visible {
 .software-subtitle i {
     color: var(--color-accent);
     font-size: 1.2rem;
+    width: 36px;
+    height: 36px;
+    background: rgba(206, 177, 79, 0.1);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Platform Architecture */
 .software-platform {
-    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, rgba(26, 26, 26, 0.8) 100%);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-xl);
-    margin-bottom: var(--spacing-xl);
+    /* Стили внутри software-block */
 }
 
 .platform-intro {
@@ -2453,7 +2485,7 @@ textarea:focus-visible {
 
 /* Hardware Terminal */
 .software-hardware {
-    margin-bottom: var(--spacing-xl);
+    /* Стили внутри software-block */
 }
 
 .hardware-terminal {
@@ -2524,7 +2556,7 @@ textarea:focus-visible {
 
 /* Development Roadmap */
 .software-roadmap {
-    margin-bottom: var(--spacing-xl);
+    /* Стили внутри software-block */
 }
 
 .roadmap-timeline {
