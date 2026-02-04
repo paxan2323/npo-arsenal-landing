@@ -157,7 +157,7 @@ def contact_submit(request):
         # Отправляем email уведомление
         try:
             send_mail(
-                subject=f'Новая заявка с сайта Птицелов от {contact_request.name}',
+                subject=f'Новая заявка с сайта Арсенал от {contact_request.name}',
                 message=f"""
 Новая заявка с сайта:
 

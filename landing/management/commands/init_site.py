@@ -9,9 +9,9 @@ class Command(BaseCommand):
         obj, created = SiteSettings.objects.get_or_create(
             pk=1,
             defaults={
-                'site_title': 'Птицелов - Антидроновая турель',
-                'site_description': 'НПО Арсенал - Роботизированная турель контрдроновой защиты Птицелов',
-                'hero_title': 'ПТИЦЕЛОВ',
+                'site_title': 'Арсенал - Антидроновая турель',
+                'site_description': 'НПО Арсенал - Роботизированная турель контрдроновой защиты',
+                'hero_title': 'АРСЕНАЛ',
                 'hero_subtitle': 'Роботизированная турель ближней контрдроновой защиты',
                 'contact_email': 'npo.arsenal.info@mail.ru',
                 'contact_phone': '8-960-283-15-14',

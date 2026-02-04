@@ -168,10 +168,10 @@ class ContactRequest(models.Model):
 
 class SiteSettings(models.Model):
     """Настройки сайта (синглтон)"""
-    site_title = models.CharField('Заголовок сайта', max_length=200, default='Птицелов')
+    site_title = models.CharField('Заголовок сайта', max_length=200, default='Арсенал')
     site_description = models.TextField('Описание для SEO', 
         default='Роботизированная турель контрдроновой защиты')
-    hero_title = models.CharField('Заголовок Hero', max_length=200, default='ПТИЦЕЛОВ')
+    hero_title = models.CharField('Заголовок Hero', max_length=200, default='АРСЕНАЛ')
     hero_subtitle = models.TextField('Подзаголовок Hero',
         default='Роботизированная турель ближней контрдроновой защиты')
     about_text = models.TextField('Текст "О системе"', blank=True)

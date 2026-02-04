@@ -13,7 +13,7 @@ from .models import (
 
 # Кастомизация заголовков админки
 admin.site.site_header = 'НПО Арсенал — Управление сайтом'
-admin.site.site_title = 'Птицелов Admin'
+admin.site.site_title = 'Арсенал Admin'
 admin.site.index_title = 'Панель управления'
 
 
